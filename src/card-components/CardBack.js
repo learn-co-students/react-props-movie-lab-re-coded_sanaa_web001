@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
-import zero from '../assets/stars/0-stars.png'
-import one from '../assets/stars/1-stars.png'
-import two from '../assets/stars/2-stars.png'
-import three from '../assets/stars/3-stars.png'
-import four from '../assets/stars/4-stars.png'
-import five from '../assets/stars/5-stars.png'
+import React, { Component } from "react";
+import zero from "../assets/stars/0-stars.png";
+import one from "../assets/stars/1-stars.png";
+import two from "../assets/stars/2-stars.png";
+import three from "../assets/stars/3-stars.png";
+import four from "../assets/stars/4-stars.png";
+import five from "../assets/stars/5-stars.png";
 
-const imgMapper = {0: zero, 1: one, 2: two, 3: three, 4: four, 5: five}
+const imgMapper = { 0: zero, 1: one, 2: two, 3: three, 4: four, 5: five };
 
 export default class CardBack extends Component {
-
-  generateRatingElement = () => {
+  generateRatingElement = (rating) => {
     // implement meeeee! See the readme for instructions
-  }
+    console.log(Boolean(rating), rating);
+    return rating === null ? (
+      <h4>No Rating Found</h4>
+    ) : (
+      <img src={imgMapper[rating]} alt="" />
+    );
+  };
 
   render() {
     return (
       <div className="card-back">
-        <h3 className="title"></h3>
+        <h3 className="title">{this.props.info.title}</h3>
         <span />
-        { /* your rating element should go here -- you can invoke methods within JSX, à la: this.myMethod() */ }
+        {
+          /* your rating element should go here -- you can invoke methods within JSX, à la: this.myMethod() */
+          this.generateRatingElement(this.props.info.IMDBRating)
+        }
         <span />
-        <h5 className="genres"></h5>
+        <h5 className="genres">{this.props.info.genres.join(", ")}</h5>
       </div>
-    )
+    );
   }
 }
