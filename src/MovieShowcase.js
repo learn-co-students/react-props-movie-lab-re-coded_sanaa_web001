@@ -8,8 +8,8 @@ export default class MovieShowcase extends Component {
     // map over your movieData array and return an array of the correct JSX
    const movies =movieData.map((movie,id) =>
      <MovieCard
-          key={this.id}
-          title={this.title}
+          key={id}
+      
           title={movie.title}
           IMDBRating={movie.IMDBRating}
           genres={movie.genres}
